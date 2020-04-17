@@ -9,4 +9,5 @@ public interface WsblogService {
 	List<Post> findAll();
 	Post findById(long id);
 	Post save(Post post);
+
 }

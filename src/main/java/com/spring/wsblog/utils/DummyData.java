@@ -19,7 +19,7 @@ public class DummyData {
 	@Autowired
 	WsblogRepository wsblogRepository;
 	
-	@PostConstruct
+	//@PostConstruct
 	public void savePosts() {
 		
 		List<Post> postList = new ArrayList<>();

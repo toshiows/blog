@@ -1,4 +1,4 @@
-package com.spring.wsblog.serviceimpl;
+package com.spring.wsblog.service.serviceimpl;
 
 import java.util.List;
 
