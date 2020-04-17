@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
 	<head>
 		<title>WsBlog</title>
 	</head>
@@ -12,7 +14,7 @@
 		</header>
 	
 	<section>
-		<div class="container" style="widith: 60%; padding-bottom: 30px">
+		<div class="container" style="width: 60%; padding-bottom: 30px">
 		
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb" style="background-color: white; padding-left: 0px">
@@ -20,9 +22,23 @@
 			  </ol>
 			</nav>
 		
-			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px">
+			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${posts}">
 				<div class="card-body">
-					test
+					
+					<a href="#">
+						<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+							<span th:text="${post.titulo}"></span>
+						</h4>
+					</a>
+					
+					<p class="card-text">
+						<span th:utext="${#strings.abbreviate(post.texto,400)}" ></span>
+					</p>
+					
+					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+						<span th:text="${post.autor}"></span>
+						<span th:text="${post.data}"></span>
+					</p>
 				</div>
 			</div>
 		</div>
