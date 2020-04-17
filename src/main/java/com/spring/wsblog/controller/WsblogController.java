@@ -21,7 +21,7 @@ public class WsblogController {
 	@RequestMapping(value = "/posts", method = RequestMethod.GET)
 	public ModelAndView getPosts() {
 		ModelAndView mv = new ModelAndView("posts");
-		List<Post> posts = wsblogService.findAll();
+		List<Post> posts = wsblogService.findAll(); //impl pode usar o metodo
 		mv.addObject("posts", posts);
 		
 		return mv;
