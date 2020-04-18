@@ -8,6 +8,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		
 	<body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
@@ -15,41 +16,39 @@
 			</nav>
 		</header>
 	
-	<section>
+	<main>
 		<div class="container" style="width: 60%; padding-bottom: 30px">
 		
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb" style="background-color: white; padding-left: 0px">
-			    <li class="breadcrumb-item active" aria-current="page">Posts</li>
+			    <li class="breadcrumb-item" aria-current="page">
+			    	<a href="/posts">Posts</a>
+			    </li>
+			    <li class="breadcrumb-item active" aria-current="page">Post</li>
 			  </ol>
 			</nav>
 		
-			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${posts}">
-				<div class="card-body">
-					
-					<a th:href="${(#mvc.url('WC#getPostDetails').arg(0, post.id)).build()}">
-					<!-- WC da sigla do controller -->
-						<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
-							<span th:text="${post.titulo}"></span>
-						</h4>
-					</a>
-					
-					<p class="card-text">
-						<span th:utext="${#strings.abbreviate(post.texto,400)}" ></span>
-					</p>
-					
-					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
-					
-					<i class="material-icons" style="vertical-align: bottom">person_outline</i>	
-						<span th:text="${post.autor}"></span>
-					<i class="material-icons" style="vertical-align: bottom">date_range</i>
-						<span th:text="${post.data}"></span>	
-					</p>
-					
-				</div>
-			</div>
+		<article>
+			<h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;">
+				<span th:text="${post.titulo}"></span>
+			</h1>
+			
+			<p class="card-subtitle mb-2 text-muted">
+				<i class="material-icons" style="vertical-align: bottom">person_outline</i>
+				<span th:text="${post.autor}"></span>
+				<br>
+				<i class="material-icons" style="vertical-align: bottom">date_range</i>
+				<span th:text="${post.data}"></span>
+			
+			</p>
+			
+			<section>
+				<p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p>
+			</section>
+		</article>
+		
 		</div>
-	</section>
+	</main>
 	
 	</body>
 </html>
