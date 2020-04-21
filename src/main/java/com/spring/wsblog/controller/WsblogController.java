@@ -60,6 +60,17 @@ public class WsblogController {
 		return "redirect:/posts";
 	}
 	
+	@RequestMapping(value="ghost/admin", method = RequestMethod.GET)
+	public ModelAndView admin() {
+		
+		ModelAndView mv = new ModelAndView("ghost/admin");
+		List<Post> posts = wsblogService.findAll(); //impl pode usar o metodo
+		mv.addObject("posts", posts);
+		
+		return mv;
+
+	}
+	
 	
 	
 }
