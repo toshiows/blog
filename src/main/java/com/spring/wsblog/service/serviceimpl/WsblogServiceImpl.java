@@ -31,4 +31,11 @@ public class WsblogServiceImpl implements WsblogService{
 		return wsblogRepository.save(post);
 	}
 
+	@Override
+	public void delete(Post post) {
+		 wsblogRepository.delete(post);
+	}
+	
+	
+
 }

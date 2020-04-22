@@ -35,8 +35,8 @@
 			</nav>
 		
 			<div>
-				<th:block th:include="mensagemValidacao"></th:block>
-				<form method="post">
+				<th:block th:include="ghost/mensagemValidacao"></th:block>
+				<form action="/postar" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" name="titulo" placeholder="Titulo *">
 					</div>

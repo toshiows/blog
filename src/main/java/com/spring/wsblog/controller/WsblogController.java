@@ -3,9 +3,11 @@ package com.spring.wsblog.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,7 @@ public class WsblogController {
 	
 	@Autowired
 	WsblogService wsblogService;
+	LocalDate dataPost;
 	
 	@RequestMapping(value = "/posts", method = RequestMethod.GET)
 	public ModelAndView getPosts() {
@@ -43,12 +46,14 @@ public class WsblogController {
 		return mv;
 	}
 	
+	
+	/*Metodos para admin*/
 	@RequestMapping(value="/newpost", method = RequestMethod.GET)
 	public String getPostForm() {
-		return "postForm";
+		return "ghost/postForm";
 	}
 	
-	@RequestMapping(value="/newpost", method = RequestMethod.POST)
+	@RequestMapping(value="/postar", method = RequestMethod.POST)
 	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios (*) estão preenchidos");
@@ -68,9 +73,37 @@ public class WsblogController {
 		mv.addObject("posts", posts);
 		
 		return mv;
-
+	}
+	
+	@RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView getUpdPostForm(@PathVariable("id") long id) {
+		
+		ModelAndView mv = new ModelAndView("ghost/editPost");
+		Post post = wsblogService.findById(id); //impl pode usar o metodo
+		mv.addObject("post", post);
+		
+		dataPost = post.getData();
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="/atualizarpost", method = RequestMethod.POST)
+	public String updatePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios (*) estão preenchidos");
+			return "redirect:/newpost";
+		}
+		
+		post.setData(dataPost);
+		wsblogService.save(post);
+		return "redirect:/posts";
 	}
 	
 	
+	@RequestMapping("ghost/deletePost")
+	public String delete(Post post) {
+		wsblogService.delete(post);
+		return "redirect:/ghost/admin";
+	}
 	
 }
