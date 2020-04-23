@@ -1,0 +1,82 @@
+<style>
+body {
+
+}
+
+.sidenav {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  background-image: url('https://cdn.wallpapersafari.com/50/79/VhKIye.jpg');
+  background-repeat: no-repeat;
+  border: solid 1px #000000;
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+}
+
+.links-nome {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-family: Raleway,sans-serif;
+  
+}
+
+.links {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  
+}
+
+
+.texto-apresent {
+  font-size: 0.9rem;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  
+}
+
+hr.new1 {
+   display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 0.5px;
+    width: 40%;
+}
+
+.sidenav a:hover {
+  color: #549174;
+  text-decoration: none; 
+}
+
+.main {
+  margin-left: 300px; /* Same as the width of the sidenav */
+  
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
