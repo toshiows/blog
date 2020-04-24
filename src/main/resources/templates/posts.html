@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://thymeleaf.org">
-	<head>
-		<title>WsBlog</title>
-		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" type="text/css" href="css/sidebar.css" media="screen" />
-	</head>
-		
-	<body>
+<head>
+<title>WsBlog</title>
 
-		<div class="sidenav">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/sidebar.css" media="screen" />
+</head>
+
+<body>
+
+	<div class="sidenav">
 		<br>
-		<div style="text-align:center">
-			<img src="https://avatars2.githubusercontent.com/u/22647963?s=460&u=7f2600122431963284951f71e13d33230ff569ca&v=4" alt="Smiley face" width="120" height="120" style="border-radius: 50%;">
+		<div style="text-align: center">
+			<img
+				src="https://avatars2.githubusercontent.com/u/22647963?s=460&u=7f2600122431963284951f71e13d33230ff569ca&v=4"
+				alt="Smiley face" width="120" height="120"
+				style="border-radius: 50%;">
 		</div>
-		  <a href="/posts" class="links-nome">Toshio Watanabe</a>
-		  <hr class="new1">
-		  <h3 class="texto-apresent">
-			  Bacharel em ciência da computação,<br>
-			  desenvovedor e entusiasta Java 
-			  <i class="material-icons" style="vertical-align: bottom">computer</i>	
-		  </h3>
-		  <hr class="new1" style="width: 20%;">
-		  <br><br>
-		  <a href="/posts" class="links">Blog</a>
-		  <a href="#clients" class="links">Newsletter</a>
-		  <a href="#contact" class="links">Sobre</a>
-		</div>
+		<a href="/posts" class="links-nome">Toshio Watanabe</a>
+		<hr class="new1">
+		<h3 class="texto-apresent">
+			Bacharel em ciência da computação,<br> desenvovedor e entusiasta
+			Java <i class="material-icons" style="vertical-align: bottom">computer</i>
+
+		</h3>
+		<hr class="new1" style="width: 20%;">
+		<br>
+		
+		<a href="/posts" class="links">Blog</a> 
+		<a href="#clients" class="links">Newsletter</a> 
+		<a href="#contact" class="links">Sobre</a> 
+		
+		<br><br><br>
+		<ul>
+			<li><a href="https://www.instagram.com/toshio_ws/" style="font-size:36px; color: white;"><i class="fa fa-flag fa fa-instagram"></i></a></li>
+			<li><a href="https://github.com/toshiows" style="font-size:36px; color: white;"><i class="fa fa-flag fa fa-github"></i></a></li>
+			<li><a href="https://www.linkedin.com/in/toshio-watanabe-silva-aa399718a" style="font-size:36px; color: white;"><i class="fa fa-flag fa fa-linkedin"></i></a></li>
+		</ul>
+		
+		<br> <br>
+		
 	
-<div class="main">
-	<section>
-		<div class="container" style="width: 85%; padding-bottom: 30px">
-		
-			<nav aria-label="breadcrumb">
-			  <ol class="breadcrumb" style="background-color: white; padding-left: 0px">
-			    <li class="breadcrumb-item active" aria-current="page">Posts</li>
-			  </ol>
-			</nav>
-		
-			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${posts}">
-				<div class="card-body">	
-					
-					<a th:href="${(#mvc.url('WC#getPostDetails').arg(0, post.id)).build()}">
-					<!-- WC da sigla do controller -->
-						<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
-							<span th:text="${post.titulo}"></span>
-						</h4>
-					</a>
-					
-					<p class="card-text">
-						<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
-					</p>
-					
-					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
-					
-					<i class="material-icons" style="vertical-align: bottom">person_outline</i>	
-						<span th:text="${post.autor}"></span>
-					<i class="material-icons" style="vertical-align: bottom">date_range</i>
-						<span th:text="${post.data}"></span>	
-					</p>
-					
+
+	</div>
+
+	<div class="main">
+		<section>
+			<div class="container" style="width: 85%; padding-bottom: 30px">
+
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb"
+						style="background-color: white; padding-left: 0px">
+						<li class="breadcrumb-item active" aria-current="page">Posts</li>
+					</ol>
+				</nav>
+
+				<div class="card shadow-sm bg-white rounded"
+					style="margin-top: 20px" th:each="post : ${posts}">
+					<div class="card-body">
+
+						<a th:href="${(#mvc.url('WC#getPostDetails').arg(0, post.id)).build()}" class="titulo">
+							<!-- WC da sigla do controller -->
+							<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+								<span th:text="${post.titulo}"></span>
+							</h4>
+						</a>
+
+						<p class="card-text">
+							<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
+						</p>
+
+						<p class="card-subtitle mb-2 text-muted"
+							style="font-size: 0.8rem;">
+
+							<i class="material-icons" style="vertical-align: bottom">person_outline</i>
+							<span th:text="${post.autor}"></span> <i class="material-icons"
+								style="vertical-align: bottom">date_range</i> <span
+								th:text="${post.data}"></span>
+						</p>
+
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-</div>
-	</body>
+		</section>
+	</div>
+</body>
 </html>
