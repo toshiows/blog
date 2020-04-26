@@ -10,5 +10,5 @@ public interface WsblogService {
 	Post findById(long id);
 	Post save(Post post);
 	void delete(Post post);
-
+	List<Post> findByTexto(String texto);
 }

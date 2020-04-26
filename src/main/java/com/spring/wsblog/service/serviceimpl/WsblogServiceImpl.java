@@ -35,6 +35,12 @@ public class WsblogServiceImpl implements WsblogService{
 	public void delete(Post post) {
 		 wsblogRepository.delete(post);
 	}
+
+	@Override
+	public List<Post> findByTexto(String texto) {
+		// TODO Auto-generated method stub
+		return wsblogRepository.findByTextoLike("%" +texto+ "%");
+	}
 	
 	
 
