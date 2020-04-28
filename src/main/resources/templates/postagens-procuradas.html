@@ -14,17 +14,16 @@
 <body>
 
 	<div class="sidenav">
-		<br>
+		<br><br>
 		<div style="text-align: center">
 			<img
-				src="https://avatars2.githubusercontent.com/u/22647963?s=460&u=7f2600122431963284951f71e13d33230ff569ca&v=4" width="120" height="120" style="border-radius: 50%;">
+				src="https://avatars2.githubusercontent.com/u/22647963?s=460&u=7f2600122431963284951f71e13d33230ff569ca&v=4" width="120" height="120" style="border-radius: 50%; border-color: black; border: 2px solid #1a382e">
 		</div>
 		<a href="/posts" class="links-nome">Toshio Watanabe</a>
 		<hr class="new1">
 		<h3 class="texto-apresent">
 			Bacharel em ciência da computação,<br> desenvovedor e entusiasta
 			Java <i class="material-icons" style="vertical-align: bottom">computer</i>
-
 		</h3>
 		<hr class="new1" style="width: 20%;">
 		<br>
@@ -33,16 +32,15 @@
 		<a href="#clients" class="links">Newsletter</a> 
 		<a href="#contact" class="links">Sobre</a> 
 		<br>
-		
-	<div class="form-group mb-2">
-		<form action="/postagens" style="margin:auto; max-width:200px">
-			<input type="text" class="form-control" placeholder="Search.." name="texto">
-			<button type="submit"><i class="fa fa-search"></i></button>
+	
+	<div class="form-group mx-sm-3 mb-2" style="padding-left: 30px;">
+		<form action="/postagens" class="form-inline">	
+			<input type="text" class="form-control" placeholder="Search.." name="texto" id="pesquisa">
+			<button type="submit" class="btn btn-outline-light"><i class="fa fa-search"></i></button>
 		</form>
-	</div>
+	</div>		
 		
-		
-		<br><br>
+		<br>
 		<hr class="new1">
 		<ul>
 			<li><a href="https://www.instagram.com/toshio_ws/" style="font-size:36px; color: white;"><i class="fa fa-flag fa fa-instagram"></i></a></li>
@@ -89,7 +87,6 @@
 								style="vertical-align: bottom">date_range</i> 
 								<span th:text="${post.data}"></span>
 						</p>
-
 					</div>
 				</div>
 			</div>
