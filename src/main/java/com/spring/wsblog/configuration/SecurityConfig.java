@@ -16,7 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/", 
 			"/posts", 
 			"/posts/{id}",
-			"/postagens"
+			"/postagens",
+			"/sobre"
 			};
 
 	@Override

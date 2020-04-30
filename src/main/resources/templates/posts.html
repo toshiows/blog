@@ -31,7 +31,7 @@
 		
 		<a href="/posts" class="links">Blog</a> 
 		<a href="#clients" class="links">Newsletter</a> 
-		<a href="#contact" class="links">Sobre</a> 
+		<a href="/sobre" class="links">Sobre</a> 
 		<br>
 	
 	<div class="form-group mx-sm-3 mb-2" style="padding-left: 30px;">
@@ -86,7 +86,7 @@
 							<i class="material-icons" style="vertical-align: bottom">person_outline</i>
 							<span th:text="${post.autor}"></span> <i class="material-icons"
 								style="vertical-align: bottom">date_range</i> 
-								<span th:text="${post.data}"></span>
+								<span th:text="${#temporals.format(post.data, 'dd-MM-yyyy')}"></span>
 						</p>
 
 					</div>

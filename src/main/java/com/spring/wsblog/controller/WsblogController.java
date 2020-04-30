@@ -50,7 +50,12 @@ public class WsblogController {
 	@GetMapping("/postagens")
 	public String listaPostagens(Model model, @RequestParam(defaultValue="") String texto) {
 		model.addAttribute("posts", wsblogService.findByTexto(texto));
-		return "/postagens-procuradas";
+		return "/posts";
+	}
+	
+	@RequestMapping(value = "/sobre", method = RequestMethod.GET)
+	public String paginaSobre() {
+		return "/sobre";
 	}
 	
 	/*Metodos para admin*/
