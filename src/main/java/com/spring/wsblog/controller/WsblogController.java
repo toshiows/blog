@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,13 +29,10 @@ public class WsblogController {
 	WsblogService wsblogService;
 	LocalDate dataPost;
 	
-	@RequestMapping(value = "/posts", method = RequestMethod.GET)
-	public ModelAndView getPosts() {
-		ModelAndView mv = new ModelAndView("posts");
-		List<Post> posts = wsblogService.findAll(); //impl pode usar o metodo
-		mv.addObject("posts", posts);
-		
-		return mv;
+	@GetMapping("/posts")
+	public String mostraPagina(Model model, @RequestParam(defaultValue="0") int page) {
+		model.addAttribute("posts", wsblogService.findAll(PageRequest.of(page, 20)));
+		return "posts";
 	}
 	
 	
@@ -57,6 +55,9 @@ public class WsblogController {
 	public String paginaSobre() {
 		return "/sobre";
 	}
+	
+	
+
 	
 	/*Metodos para admin*/
 	@RequestMapping(value="/newpost", method = RequestMethod.GET)

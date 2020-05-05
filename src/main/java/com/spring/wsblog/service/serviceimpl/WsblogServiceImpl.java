@@ -3,6 +3,8 @@ package com.spring.wsblog.service.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.spring.wsblog.model.Post;
@@ -40,6 +42,12 @@ public class WsblogServiceImpl implements WsblogService{
 	public List<Post> findByTexto(String texto) {
 		// TODO Auto-generated method stub
 		return wsblogRepository.findByTextoLike("%" +texto+ "%");
+	}
+
+	@Override
+	public Page<Post> findAll(PageRequest pageRequest) {
+		// TODO Auto-generated method stub
+		return wsblogRepository.findAll(pageRequest);
 	}
 	
 	
