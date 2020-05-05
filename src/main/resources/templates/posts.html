@@ -93,11 +93,17 @@
 				</div>
 			</div>
 		</section>
-		<ul class="nav nav-pills text-center">
-			<li class="nav-item" th:each="i : ${#numbers.sequence(0,posts.totalPages-1)}">
-				<a th:href="@{/posts(page=${i})}" th:text="${i}" class="nav-link"></a>
-			</li>
-		</ul>
+
+
+		<div th:text="'Página '+ ${currentPage+1} + ' de ' + ${posts.totalPages}" style="background-color: yellow; padding-left: 70px"></div>
+		
+		<th:block th:if="${currentPage}!= 0">
+			<a th:href="@{/posts?page=} + ${currentPage-1}" style="background-color: yellow; padding-left: 70px">< Anterior</a>
+		</th:block>
+		
+		<th:block th:if="${currentPage} < ${posts.totalPages-1}">
+			<a th:href="@{/posts?page=} + ${currentPage+1}" style="background-color: yellow; padding-left: 70px">Próxima ></a>
+		</th:block>
 	</div>
 </body>
 </html>
