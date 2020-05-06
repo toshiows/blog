@@ -15,4 +15,5 @@ public interface WsblogService {
 	void delete(Post post);
 	List<Post> findByTexto(String texto);
 	Page<Post> findAll(PageRequest pageRequest);
+	
 }

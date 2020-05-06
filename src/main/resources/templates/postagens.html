@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>WsBlog</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+		<header>
+			<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+			  <span class="navbar-brand mb-0 h1" style="font-weight: bold">
+			 	 <a href="/posts" style="color: white; text-decoration: none;">WsBlog</a>
+			  </span>
+			</nav>
+		</header>
+
+	<div class="main">
+		<section>
+			<div class="container" style="width: 60%; padding-bottom: 30px">
+			
+			<th:block th:if="${#lists.size(posts)} > 0">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb"
+						style="background-color: white; padding-left: 0px">
+						<li class="breadcrumb-item active" aria-current="page">
+							<a href="/posts">Posts</a>
+						</li>
+						<li class="breadcrumb-item active"><span th:text="${#lists.size(posts)}"></span> resultados</li>
+					</ol>
+				</nav>
+			</th:block>
+				<div class="card shadow-sm bg-white rounded"
+					style="margin-top: 20px" th:each="post : ${posts}">
+					<div class="card-body">
+
+						<a th:href="${(#mvc.url('WC#getPostDetails').arg(0, post.id)).build()}" class="titulo">
+							<!-- WC da sigla do controller -->
+							<h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+								<span th:text="${post.titulo}"></span>
+							</h4>
+						</a>
+
+						<p class="card-text">
+							<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
+						</p>
+
+						<p class="card-subtitle mb-2 text-muted"
+							style="font-size: 0.8rem;">
+
+							<i class="material-icons" style="vertical-align: bottom">person_outline</i>
+							<span th:text="${post.autor}"></span> <i class="material-icons"
+								style="vertical-align: bottom">date_range</i> 
+								<span th:text="${#temporals.format(post.data, 'dd-MM-yyyy')}"></span>
+						</p>
+
+					</div>
+				</div>
+				<th:block th:if="${#lists.size(posts)} == 0">
+				<br>
+					<h2>
+						Desculpe, não há nenhum resultado com a palavra "<span th:text="${palavraChave}" style="font-weight: bold;"></span>". <br><br>
+						<a href="/posts">Voltar</a>
+					</h2>
+					
+				</th:block>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

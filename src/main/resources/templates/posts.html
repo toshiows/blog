@@ -94,16 +94,19 @@
 			</div>
 		</section>
 
-
-		<div th:text="'Página '+ ${currentPage+1} + ' de ' + ${posts.totalPages}" style="background-color: yellow; padding-left: 70px"></div>
-		
-		<th:block th:if="${currentPage}!= 0">
-			<a th:href="@{/posts?page=} + ${currentPage-1}" style="background-color: yellow; padding-left: 70px">< Anterior</a>
-		</th:block>
-		
-		<th:block th:if="${currentPage} < ${posts.totalPages-1}">
-			<a th:href="@{/posts?page=} + ${currentPage+1}" style="background-color: yellow; padding-left: 70px">Próxima ></a>
-		</th:block>
+		<nav style=" padding-bottom: 10px; text-align: center">
+			<th:block th:if="${currentPage}!= 0">
+				<a th:href="@{/posts?page=} + ${currentPage-1}" class="btn btn-outline-info">
+					<i class="material-icons" style="vertical-align: bottom">arrow_back_ios</i> Recentes
+				</a>
+			</th:block>
+			<span th:text="'Página '+ ${currentPage+1} + ' de ' + ${posts.totalPages}" style="font-size: 20px; padding-left: 10px; padding-right: 10px;"></span>
+			<th:block th:if="${currentPage} < ${posts.totalPages-1}">
+				<a th:href="@{/posts?page=} + ${currentPage+1}" class="btn btn-outline-info" >
+					Anteriores <i class="material-icons" style="vertical-align: bottom">arrow_forward_ios</i>
+				</a>
+			</th:block>
+		</nav>
 	</div>
 </body>
 </html>

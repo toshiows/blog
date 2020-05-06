@@ -31,7 +31,7 @@ public class WsblogController {
 	
 	@GetMapping("/posts")
 	public String mostraPagina(Model model, @RequestParam(defaultValue="0") int page) {
-		model.addAttribute("posts", wsblogService.findAll(PageRequest.of(page, 15)));
+		model.addAttribute("posts", wsblogService.findAll(PageRequest.of(page, 5)));
 		model.addAttribute("currentPage", page);
 		return "posts";
 	}
@@ -49,16 +49,14 @@ public class WsblogController {
 	@GetMapping("/postagens")
 	public String listaPostagens(Model model, @RequestParam(defaultValue="") String texto) {
 		model.addAttribute("posts", wsblogService.findByTexto(texto));
-		return "/posts";
-		//nao tem tudo para popular causando erro
+		model.addAttribute("palavraChave", texto);
+		return "/postagens";
 	}
 	
 	@RequestMapping(value = "/sobre", method = RequestMethod.GET)
 	public String paginaSobre() {
 		return "/sobre";
 	}
-	
-	
 
 	
 	/*Metodos para admin*/

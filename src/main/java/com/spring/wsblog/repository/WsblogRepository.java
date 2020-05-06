@@ -10,4 +10,6 @@ public interface WsblogRepository extends JpaRepository<Post, Long>{
 
 	List<Post> findByTextoLike(String texto);
 //implementa metodos do jpa
+
+
 }
