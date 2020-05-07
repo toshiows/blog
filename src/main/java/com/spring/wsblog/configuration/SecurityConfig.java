@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(AUTH_LIST).permitAll() //todas uris no auth_list estao permitidas acesso
 		.anyRequest().authenticated()
-		.and().formLogin().permitAll()
+		.and().formLogin().permitAll().defaultSuccessUrl("/ghost/admin",true)
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 
@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/bootstrap/**","/css/**","/resources/**","/imagens/**");
+		web.ignoring().antMatchers("/bootstrap/**","/css/**","/resources/**","/static/**", "/imagens/**");
 		
 //	        web.ignoring().antMatchers("/bootstrap/**", "/style/**"); //pastas do projeto
 	}
